@@ -6,7 +6,13 @@ import { AuthContext } from '../../../Providers/AuthProvider';
 
 const NavigationBar = () => {
 
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
+
+    const handdleLogOut = () =>{
+        logOut()
+        .then()
+        .catch(error => console.log(error))
+    }
 
 
     return (
@@ -27,7 +33,7 @@ const NavigationBar = () => {
                             }
 
                             {
-                                user ? <Button className='ms-2' variant="dark">Logout</Button> : <Link to="/login"><Button className='ms-2'  variant="dark">Login</Button></Link>
+                                user ? <Button className='ms-2' variant="dark" onClick={ handdleLogOut}>Logout</Button> : <Link to="/login"><Button className='ms-2'  variant="dark">Login</Button></Link>
                             }
                         </Nav>
                     </Navbar.Collapse>

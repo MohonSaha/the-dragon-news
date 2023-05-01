@@ -1,11 +1,15 @@
 import React, { useContext } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
 
 const Login = () => {
 
     const {signIn} = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.from?.pathname || '/category/0';
 
     const handleLogin = event =>{
         event.preventDefault();
@@ -17,14 +21,15 @@ const Login = () => {
         .then(result=>{
             const loggedUser = result.user;
             console.log(loggedUser);
+            navigate(from, {replace: true})
         })
         .catch(error => console.log(error))
     }
 
 
     return (
-        <div style={{height: '100vh', backgroundColor: '#F1F1F1'}}>
-            <Container className='mx-auto w-25 p-4' style={{backgroundColor: '#FFFFFF'}}>
+        <div>
+            <Container className='mx-auto w-25 p-5 mt-5 rounded-1' style={{backgroundColor: '#dbdbdb'}}>
                 <h3>Please Login</h3>
                 <Form onSubmit={handleLogin}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
