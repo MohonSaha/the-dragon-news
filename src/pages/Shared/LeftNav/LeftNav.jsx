@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import EditorsInsights from '../../News/EditorsInsights/EditorsInsights';
 
 const LeftNav = () => {
 
@@ -25,6 +26,10 @@ const LeftNav = () => {
                     </p>)
                 }
             </div>
+
+            <EditorsInsights>
+                1
+            </EditorsInsights>
         </div>
     );
 };

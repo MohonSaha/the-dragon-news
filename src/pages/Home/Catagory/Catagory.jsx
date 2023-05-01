@@ -4,19 +4,21 @@ import NewsCard from '../NewsCard/NewsCard';
 
 const Catagory = () => {
 
-    const {id} = useParams();
+    const { id } = useParams();
     const catagoryNews = useLoaderData()
 
 
     return (
         <div>
-            <h2>This is category: {catagoryNews.length} </h2>
-            {
-                catagoryNews.map(news => <NewsCard
-                    key={news._id}
-                    news={news}
-                ></NewsCard>)
-            }
+            {id ? <h4>This category news: {catagoryNews.length} </h4> : <h4>The News Dragon Home</h4>}
+            <div className='mt-3'>
+                {
+                    catagoryNews.map(news => <NewsCard
+                        key={news._id}
+                        news={news}
+                    ></NewsCard>)
+                }
+            </div>
         </div>
     );
 };

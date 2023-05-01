@@ -1,42 +1,30 @@
 import React from 'react';
 import logo from '../../../assets/logo.png'
-import moment from 'moment'; import { Button, Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
+import moment from 'moment'; import { Button, Container} from 'react-bootstrap';
 ;
 import Marquee from "react-fast-marquee";
 
 const Header = () => {
+
+
+
     return (
-        <Container className='mb-5'>
+        <Container className=''>
             <div className='text-center'>
                 <img src={logo} alt="" />
                 <p> <small>Journalism without fear or favour</small> </p>
                 <p>{moment().format("dddd, MMMM D, YYYY")}</p>
             </div>
-            <div className='d-flex bg-secondary p-2 rounded mb-2'>
+            <div style={{ backgroundColor: '#F3F3F3' }} className='d-flex p-2 rounded mb-2'>
                 <Button variant="danger">Latest</Button>
                 <Marquee className='' speed={70}>
                     I can be a React component, multiple React components, or just some text.I can be a React component, multiple React components.
                 </Marquee>
             </div>
 
-            <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
-                <Container>
-                    <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-                    <Navbar.Collapse id="responsive-navbar-nav">
-                        <Nav className="mx-auto">
-                            <Nav.Link href="#features">Home</Nav.Link>
-                            <Nav.Link href="#pricing">About</Nav.Link>
-                            <Nav.Link href="#pricing">Career</Nav.Link>
-                        </Nav>
-                        <Nav>
-                            <Nav.Link href="#deets">Profile</Nav.Link>
-                            <Nav.Link eventKey={2} href="#memes">
-                            <Button variant="secondary">Login</Button>
-                            </Nav.Link>
-                        </Nav>
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar>
+            
+
+
         </Container>
     );
 };
