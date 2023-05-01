@@ -1,13 +1,32 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Container, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../Providers/AuthProvider';
 
 const Login = () => {
+
+    const {signIn} = useContext(AuthContext);
+
+    const handleLogin = event =>{
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        
+        signIn(email, password)
+        .then(result=>{
+            const loggedUser = result.user;
+            console.log(loggedUser);
+        })
+        .catch(error => console.log(error))
+    }
+
+
     return (
         <div style={{height: '100vh', backgroundColor: '#F1F1F1'}}>
             <Container className='mx-auto w-25 p-4' style={{backgroundColor: '#FFFFFF'}}>
                 <h3>Please Login</h3>
-                <Form>
+                <Form onSubmit={handleLogin}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Email address</Form.Label>
                         <Form.Control type="email" name='email' required placeholder="Enter email" />
@@ -18,7 +37,7 @@ const Login = () => {
                         <Form.Control type="password" name='password' required placeholder="Password" />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Check me out" />
+                        <Form.Check type="checkbox" label="Remember me" />
                     </Form.Group>
                     <Button className='w-100' variant="dark" type="submit">
                         Login
