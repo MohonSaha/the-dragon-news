@@ -44,7 +44,7 @@ const router = createBrowserRouter([
       {
         path: ':id',
         element: <Catagory></Catagory>,
-        loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`)
+        loader: ({ params }) => fetch(`https://the-news-deagon-server-mohonsaha.vercel.app/categories/${params.id}`)
       }
     ]
   },
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
       {
         path: ':id',
         element: <PrivateRoute><News></News></PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/news/${params.id}`)
+        loader: ({ params }) => fetch(`https://the-news-deagon-server-mohonsaha.vercel.app/news/${params.id}`)
       }
     ]
   }
